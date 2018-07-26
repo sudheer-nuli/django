@@ -1,0 +1,57 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+	   facebook login page
+	</title>
+	<link type="text/css" rel="stylesheet" href='{% static "style.css" %}'> 
+  </head>
+  <body>
+        <div>
+         <div class="header1">
+		 </div>
+		<form action='login' method="POST" class="header">
+			{% csrf_token %}
+		     <img  id="img1" src='{% static "facebook.png" %}'>
+			 <div id="form1" class="header">Email or phone<br>
+			  <input type="mail" placeholder="Email" name="email"><br>
+			  <input type="checkbox">keep me logged in </div>
+			 <div id="form2" class="header">password<br>
+			 <input type="password" placeholder="password" name="password"><br>
+			 forgot password?</div>
+			 <input type="submit" class="submit1" value="login">
+		</form>
+		</div>
+		<div>
+			
+			{% if msg %}
+				<p>{{msg}}</p>
+			{% endif %}
+				
+		</div>
+		<div class="fb-body">
+		    <div id="intro2" class="fb-body" >create an account</div>
+			<div id="img2" class="fb-body"><img src='{% static "world.jpg" %}'></div>
+			<div id="intro3" class="fb-body" >it's free and always will be</div>
+			<!-- new user creation form -->
+			<form action='createuser' method="POST" id="form3" class="fb-body">
+				{% csrf_token %}
+				{% if error %}
+					<p>{{error}}</p> 
+				{% endif %}
+			    <input required placeholder="First Name" type="text" id="namebox" name="fname">
+				<input required placeholder="Last Name" type="text" id="namebox" name="lname">
+				<input required placeholder="Email" type="text" id="mailbox" name="email"><br>
+				<input required placeholder="Re-Enter Email" type="text" id="mailbox" name="remail"><br>
+				<input required placeholder="password" type="password" id="namebox" name="password" ><br>
+				<input type="date" id="namebox" ><br><br>
+				<input  type="radio"  id="gender" value="male"name="gender">male
+				<input  type="radio"  id="gender" value="female"name="gender">female<br><br>
+				<p id="intro4">By clicking crate account ,you agree  to our terms and conditions.</p>
+				<input type="submit" class="button2" value="signup">
+			</form>
+		</div>
+  </body> 
+</html>
