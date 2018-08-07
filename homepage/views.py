@@ -27,5 +27,11 @@ def login(request):
 
     user = get_object_or_404(User, email=post['email'])
     print(user.password)
+    if user.password==post["password"]:
+        def table(request):
+            return render(request,'table.html')
+        
+
+       
     return HttpResponse('we do login')
     
